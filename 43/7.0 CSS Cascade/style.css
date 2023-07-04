@@ -1,6 +1,6 @@
 /* Don't change the existing CSS. */
 #outer-box {
-border: 10px solid purple;
+background-color:  purple;
 }
 
 .box {
