@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <style>
+            header, footer {
+                background-color: #ffca3a;
+            }
+
+            h2 {
+                font-size: 24px;
+                font-weight: 600;
+                background-image: linear-gradient(to left, #553c9a, #b393d3);
+                color: transparent;
+                background-clip: text;
+                -webkit-background-clip: text;
+            }
+
+            .button {
+                font-family: Arial, Helvetica, sans-serif;
+                color: white;
+                background-color: grey;
+                border: none;
+                border-radius:5px
+            }
+        </style>  
+    </head>
+    <body>
+        <!--This is the code I wrote today--->
+        <header>
+            <h1>New Awesome Product</h1>
+        </header>
+
+        <!--This is the main part-->
+        <main>
+            <img src="https://blob.sololearn.com/courses/np.png">
+            <p>Introducing our <b>Latest poduct</b>, designed to make <br>
+            your life easier and more efficient</p>
+            <ul>
+                <li>Feature 1</li>
+                <li>Feature 2</li>
+                <li>Feature 3</li>
+            </ul>
+            <h2>Order now!</h2>
+            <form>
+                <div class="size">
+                <label for="size">Size</label>
+                    <select>
+                        <option value="Small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                    </select>
+                <label for="color">Color</label>
+                    <select>
+                        <option value="red">Red<option>
+                        <option value="green">Green<option>
+                        <option value="blue">Blue<option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name">    
+                </div>
+                <br>
+                <div>
+                    <label for="email">Email<label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <br>
+                <input onclick=alert("Order Confirmed") class="button" type="submit" value="submit">
+            </form>
+        </main>
+
+        <!--This is the footer-->
+        <footer>
+            <p>Made with <3 </p>
+        </footer>
+    </body>
+</html>
