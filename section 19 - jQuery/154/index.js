@@ -1,6 +1,14 @@
 
-$("h1").text("Bye");
+$("h1").css("color", "green");
 
-$("button").text("Don't Click Me");
+console.log($("h1").css("color"));
 
-// $("button").html("<em>hey</em>")
+$("h1").css("font-size", "5rem")
+console.log($("h1").css("font-size"));
+
+
+$("h1").addClass("big-title margin-50");
+
+// $("h1").removeClass("big-title");
+
+console.log($("h1").hasClass("margin-50"));
