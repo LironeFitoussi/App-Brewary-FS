@@ -71,6 +71,8 @@
 //   });
 // });
 
-$("button").click(function () {
-  $("h1").toggle("slow").animate();
-});
+// $("button").click(function () {
+//   $("h1").toggle("slow").animate({
+//     opacity: "0.5"
+//   });
+// });
