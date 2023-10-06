@@ -14,14 +14,18 @@ inquirer
     {"message": "Type Your URL: ", "name": "URL"}
   ])
   .then((answers) => {
-    const url = answers;
-    var qr_svg = qr.image(url);
-    qr_svg.pipe(fs.createWriteStream('qr-img1.png'));  
+    const url = answers.URL;
+    let qr_img = qr.image(url);
+    qr_img.pipe(fs.createWriteStream('qr-img1.png'));  
+    fs.writeFile("URL.txt", url, (err) => {
+      if (err) throw err;
+  })
+    console.log("URL Code successfully generated!");
   })
   .catch((error) => {
-    if (error.isTtyError) {
-      // Prompt couldn't be rendered in the current environment
+    if (error) {
+      console.error('Error saving URL:', error);
     } else {
-      // Something else went wrong
+      console.log('URL saved to URL.txt');
     }
   });
