@@ -17,6 +17,7 @@ app.post("/submit", (req, res) => {
   console.log(req.body);
   res.redirect("back");
 });
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
