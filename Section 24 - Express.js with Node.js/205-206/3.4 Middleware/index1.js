@@ -1,6 +1,6 @@
 import express from "express";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import dirname from "path";
+import fileURLToPath from "url";
 import BodyParser from "body-parser";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
