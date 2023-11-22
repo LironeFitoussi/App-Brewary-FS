@@ -1,46 +1,39 @@
 import express from "express";
+import bodyParser from "body-parser";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import BodyParser from "body-parser";
-import { log } from "console";
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
 const app = express();
-const port = 3000;
+const port = 2500;
 
-const pswd = "ILoveProgramming";
-let userPswd = "";
+var userIsAuthorised = false;
 
-function checkPswd(req, res, next) {
-  userPswd = req.body["password"];
+app.use(bodyParser.urlencoded({ extended: true }));
+
+function passwordCheck(req, res, next) {
+  const password = req.body["password"];
+  if (password === "ILoveProgramming") {
+    userIsAuthorised = true;
+  }
   next();
 }
 
-app.use(BodyParser.urlencoded({ extended: true }));
-app.use(BodyParser.json());
-
-app.use(checkPswd);
+app.use(passwordCheck);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
 app.post("/check", (req, res) => {
-  try {
-    const password = req.body.password;
-    if (password === pswd) {
-      console.log("succefullly logged in");
-      res.sendFile(__dirname + "/public/secret.html");
-    } else {
-      throw new Error("Alert!!");
-    }
-  } catch (error) {
-    res.json({
-      success: false,
-      message: error.message,
-    });
+  if (userIsAuthorised) {
+    res.sendFile(__dirname + "/public/secret.html");
+  } else {
+    res.sendFile(__dirname + "/public/index.html");
+    //Alternatively res.redirect("/");
   }
 });
 
 app.listen(port, () => {
-  console.log(`Server is runing on port ${port}`);
+  console.log(`Listening on port ${port}`);
 });
