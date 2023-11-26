@@ -1,0 +1,12 @@
+{
+  "name": "app-brewary-fs",
+  "version": "1.0.0",
+  "description": "/*** This is my FS online course ***/",
+  "main": "Section 23 - Node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
