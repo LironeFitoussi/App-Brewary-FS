@@ -2,9 +2,12 @@ import express from "express";
 // import bodyParser from "body-parser";
 import axios from  "axios";
 
+
 const app = express();
 const port = 3000;
 // app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static('public'))
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
@@ -17,6 +20,7 @@ app.get("/", async (req, res) => {
         console.log(result);
         res.render("index.ejs", { data: result });
     } catch (error) {
-        res.status(404).send(error.message)
+        console.log(error.response);
+        res.status(500).send("Internal Server Error");
     }    
 });
