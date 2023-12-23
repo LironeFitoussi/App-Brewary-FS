@@ -1,0 +1,2 @@
+INSERT INTO orders
+VALUES (1, 4362, 2, 1)
