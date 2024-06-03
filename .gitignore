@@ -1,0 +1,4 @@
+# ignore all node_modules in the repository
+node_modules/
+
+# Node.js
