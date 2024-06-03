@@ -1,17 +1,49 @@
 import React, { useState } from "react";
+import ToDoItem from "./ToDoItem";
+import InputArea from "./InputArea";
 
 function App() {
-  const [headingText, headingSet] = useState("Hello")
-  function handleChange(e) {
-    console.log(e.target.value.substr(length - 1));
-    headingSet(e.target.value)
+  const [inputText, setInputText] = useState("");
+  const [items, setItems] = useState([]);
+
+  function handleChange(event) {
+    const newValue = event.target.value;
+    setInputText(newValue);
   }
-  
+
+  function addItem() {
+    setItems(prevItems => {
+      return [...prevItems, inputText];
+    });
+    setInputText("");
+  }
+
+  function deleteItem(id) {
+    setItems(prevItems => {
+      return prevItems.filter((item, index) => {
+        return index !== id;
+      });
+    });
+  }
+
   return (
     <div className="container">
-      <h1> Hello {headingText}! </h1>
-      <input id="myBtn" onChange={handleChange} type="text" placeholder="What's your name?" />
-      <button>Submit</button>
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <InputArea handleChange={handleChange} inputText={inputText} addItem={addItem}/>
+      <div>
+        <ul>
+          {items.map((todoItem, index) => (
+            <ToDoItem
+              key={index}
+              id={index}
+              text={todoItem}
+              onChecked={deleteItem}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
